@@ -33,18 +33,22 @@ package com.firebase.geofire;
  */
 public final class GeoLocation {
 
-    /** The latitude of this location in the range of [-90, 90] */
+    /**
+     * The latitude of this location in the range of [-90, 90]
+     */
     public final double latitude;
 
-    /** The longitude of this location in the range of [-180, 180] */
+    /**
+     * The longitude of this location in the range of [-180, 180]
+     */
     public final double longitude;
 
     /**
      * Creates a new GeoLocation with the given latitude and longitude.
      *
-     * @throws java.lang.IllegalArgumentException If the coordinates are not valid geo coordinates
-     * @param latitude The latitude in the range of [-90, 90]
+     * @param latitude  The latitude in the range of [-90, 90]
      * @param longitude The longitude in the range of [-180, 180]
+     * @throws java.lang.IllegalArgumentException If the coordinates are not valid geo coordinates
      */
     public GeoLocation(double latitude, double longitude) {
         if (!GeoLocation.coordinatesValid(latitude, longitude)) {
@@ -56,7 +60,8 @@ public final class GeoLocation {
 
     /**
      * Checks if these coordinates are valid geo coordinates.
-     * @param latitude The latitude must be in the range [-90, 90]
+     *
+     * @param latitude  The latitude must be in the range [-90, 90]
      * @param longitude The longitude must be in the range [-180, 180]
      * @return True if these are valid geo coordinates
      */
@@ -85,6 +90,8 @@ public final class GeoLocation {
         result = (int) (temp ^ (temp >>> 32));
         temp = Double.doubleToLongBits(longitude);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
+
+        // TODO!
         return result;
     }
 
